@@ -1,7 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { Umzug, memoryStorage } from "umzug";
+// import { memoryStorage } from "umzug/lib/storage/memory";
+// import { Umzug } from "umzug/lib/umzug";
+import "./App.css";
+import logo from "./logo.svg";
 
 function App() {
+  useEffect(() => {
+    const umzug = new Umzug({
+      migrations: [],
+      storage: memoryStorage(),
+      logger: console,
+    });
+    console.log(umzug)
+    return umzug;
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
